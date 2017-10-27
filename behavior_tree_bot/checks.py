@@ -3,7 +3,7 @@
 def if_neutral_planet_available(state):
     return any(state.neutral_planets())
 
-
+# returns true if total ships > enemy ships
 def have_largest_fleet(state):
     return sum(planet.num_ships for planet in state.my_planets()) \
              + sum(fleet.num_ships for fleet in state.my_fleets()) \
