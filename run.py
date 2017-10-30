@@ -31,21 +31,27 @@ def test(bot, opponent_bot, map_num):
         line = p.stdout.readline().decode('utf-8')
         if '1 timed out' in line:
             print(bot_name,'timed out.')
+            print('\n')
             break
         elif '2 timed out' in line:
             print(opponent_name,'timed out.')
+            print('\n')
             break
         elif '1 crashed' in line:
             print(bot_name, 'crashed.')
+            print('\n')
             break
         elif '2 crashed' in line:
             print(opponent_name, 'crashed')
+            print('\n')
             break
         elif 'Player 1 Wins!' in line:
             print(bot_name,'wins!')
+            print('\n')
             break
         elif 'Player 2 Wins!' in line:
             print(opponent_name,'wins!')
+            print('\n')
             break
 
         if return_code is not None:
@@ -66,6 +72,12 @@ if __name__ == '__main__':
     #maps = [26, 1, 11, 23, 9]      # map 11 is a loss
     #maps = [33, 77, 14, 95, 5]     # maps 77, 14, 5 are losses
     #maps = [44, 63, 78, 45, 2]     # maps 78, 45 are losses
+    #maps = []
+    #for i in range(101):
+    #    if i == 0:
+    #        print('\n')
+    #    else:
+    #        maps.append(i)
 
     my_bot = 'behavior_tree_bot/bt_bot.py'
     show = len(sys.argv) < 2 or sys.argv[1] == "show"
@@ -76,3 +88,10 @@ if __name__ == '__main__':
         else:
             # use this command if you just want the results of the matches reported
             test(my_bot, opponent, map)
+
+    #for opponent in opponents:
+    #    for some_map in maps:
+    #        #show_match(my_bot, opponent, some_map)
+    #        test(my_bot, opponent, some_map)
+
+

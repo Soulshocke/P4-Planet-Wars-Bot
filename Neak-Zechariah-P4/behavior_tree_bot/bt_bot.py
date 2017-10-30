@@ -3,7 +3,7 @@
 
 """ 
 Name:       Zechariah Neak                        Partner:    Jesus Hernandez
-Email:      zneak@ucsc.edu                        Email:      jherna83@ucsc.edu
+Email:      zneak@ucsc.edu                        Email:      
 ID:         1367249
 Course:     CMPM146 Game AI
 Professor:  Daniel G Shapiro
@@ -50,7 +50,7 @@ def setup_behavior_tree():
     retaliate = Action(retaliate_with_fury)
 
     # *** Begin preliminary suprise invasion over the galaxy. ***
-    imperial_ambition = Sequence(name='Expansion Strategy: Manifest Destiny')
+    imperial_ambition = Selector(name='Expansion Strategy: Manifest Destiny')
     imperial_ambition.child_nodes = [colonize, invade]
 
     # *** Consolidate and retaliate if under attack by hostiles. ***

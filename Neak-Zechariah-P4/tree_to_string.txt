@@ -1,0 +1,12 @@
+Selector: High Level Ordering of Strategies
+| Selector: Expansion Strategy: Manifest Destiny
+| | Action: take_defenseless_territory
+| | Action: attack_with_no_mercy
+| Sequence: Aggressive Strategy: Crush All Remaining Resistance
+| | Check: have_largest_fleet
+| | Action: attack_with_no_mercy
+| Sequence: Security Strategy: Cereberus
+| | Check: if_under_attack
+| | Action: reinforce_with_vengeance
+| | Action: retaliate_with_fury
+| Action: attack_with_no_mercy
