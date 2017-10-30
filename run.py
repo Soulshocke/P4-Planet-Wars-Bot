@@ -55,14 +55,17 @@ def test(bot, opponent_bot, map_num):
 if __name__ == '__main__':
     path =  os.getcwd()
     opponents = [#'opponent_bots/do_nothing_bot.py'
-                 #'opponent_bots/easy_bot.py'
-                 #'opponent_bots/spread_bot.py',
-                 #'opponent_bots/aggressive_bot.py',
-                 'opponent_bots/defensive_bot.py'
-                 #'opponent_bots/production_bot.py'
+                 'opponent_bots/easy_bot.py',
+                 'opponent_bots/spread_bot.py',
+                 'opponent_bots/aggressive_bot.py',
+                 'opponent_bots/defensive_bot.py',
+                 'opponent_bots/production_bot.py'
                  ]
 
-    maps = [71, 13, 24, 56, 7, 44]
+    maps = [71, 13, 24, 56, 7]
+    #maps = [26, 1, 11, 23, 9]      # map 11 is a loss
+    #maps = [33, 77, 14, 95, 5]     # maps 77, 14, 5 are losses
+    #maps = [44, 63, 78, 45, 2]     # maps 78, 45 are losses
 
     my_bot = 'behavior_tree_bot/bt_bot.py'
     show = len(sys.argv) < 2 or sys.argv[1] == "show"

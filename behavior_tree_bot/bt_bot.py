@@ -1,6 +1,24 @@
 #!/usr/bin/env python
 #
 
+""" 
+Name:       Zechariah Neak                        Partner:    Jesus Hernandez
+Email:      zneak@ucsc.edu                        Email:      
+ID:         1367249
+Course:     CMPM146 Game AI
+Professor:  Daniel G Shapiro
+
+                                \\\\\\\ Program 4 ///////
+
+Description:
+    This is a bot that is designed to win at Planet Wars against 5 other bots using
+    a behavior tree. The root acts as a Selector composite parent that checks through
+    each Sequence composite child top to bottom, and performs the action for whatever
+    Sequence child returns true. Each Sequence child only returns true if all its
+    checks and actions come out as successful.
+                     
+"""
+
 """
 // There is already a basic strategy in place here. You can use it as a
 // starting point, or you can throw it out entirely and replace it with your
@@ -24,27 +42,29 @@ def setup_behavior_tree():
 
     # Top-down construction of behavior tree
     root = Selector(name='High Level Ordering of Strategies')
-    #logging.info("Test logging info")
 
-    imperial_aggression = Sequence(name='Aggressive Strategy')
-    neutral_planet_check = Check(if_neutral_planet_available)
-    colonize = Action(colonize_five_neutral_planets)
-    invade = Action(attack_weakest_enemy_planet)
-    imperial_aggression.child_nodes = [neutral_planet_check, colonize]
-    #imperial_aggression.child_nodes = [largest_fleet_check, invade]
+    # Define available actions to take.
+    colonize = Action(take_defenseless_territory)
+    invade = Action(attack_with_no_mercy)
+    reinforce = Action(reinforce_with_vengeance)
+    retaliate = Action(retaliate_with_fury)
 
-    #offensive_plan = Sequence(name='Offensive Strategy')
-    #largest_fleet_check = Check(have_largest_fleet)
-    #attack = Action(attack_weakest_enemy_planet)
-    #offensive_plan.child_nodes = [largest_fleet_check, attack]
+    # *** Begin preliminary suprise invasion over the galaxy. ***
+    imperial_ambition = Sequence(name='Expansion Strategy: Manifest Destiny')
+    imperial_ambition.child_nodes = [colonize, invade]
 
-    #spread_sequence = Sequence(name='Spread Strategy')
-    #neutral_planet_check = Check(if_neutral_planet_available)
-    #spread_action = Action(spread_to_weakest_neutral_planet)
-    #spread_sequence.child_nodes = [neutral_planet_check, spread_action]
+    # *** Consolidate and retaliate if under attack by hostiles. ***
+    imperial_shield = Sequence(name='Security Strategy: Cereberus')
+    danger_check = Check(if_under_attack)
+    imperial_shield.child_nodes = [danger_check, reinforce, retaliate]
+    
+    # *** If the advantage is ours, attack with full force. ***
+    imperial_aggression = Sequence(name='Aggressive Strategy: Crush All Remaining Resistance')
+    largest_fleet_check = Check(have_largest_fleet)
+    imperial_aggression.child_nodes = [largest_fleet_check, invade]
 
-    #root.child_nodes = [offensive_plan, spread_sequence, attack.copy()]
-    root.child_nodes = [imperial_aggression, invade.copy()]
+    # Begin selecting strategies. 
+    root.child_nodes = [imperial_ambition, imperial_aggression, imperial_shield, invade.copy()]
 
     logging.info('\n' + root.tree_to_string())
     return root
