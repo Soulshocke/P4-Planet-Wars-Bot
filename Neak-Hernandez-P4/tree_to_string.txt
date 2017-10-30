@@ -1,5 +1,5 @@
 Selector: High Level Ordering of Strategies
-| Selector: Expansion Strategy: Manifest Destiny
+| Sequence: Expansion Strategy: Manifest Destiny
 | | Action: take_defenseless_territory
 | | Action: attack_with_no_mercy
 | Sequence: Aggressive Strategy: Crush All Remaining Resistance

@@ -1,7 +1,7 @@
 
 """ 
 Name:       Zechariah Neak                        Partner:    Jesus Hernandez
-Email:      zneak@ucsc.edu                        Email:      
+Email:      zneak@ucsc.edu                        Email:      jherna83@ucsc.edu
 ID:         1367249
 Course:     CMPM146 Game AI
 Professor:  Daniel G Shapiro
